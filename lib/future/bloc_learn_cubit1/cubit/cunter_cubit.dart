@@ -11,4 +11,28 @@ class CounterCubit extends Cubit<int> {
 
   //emit metodu ile state değişikliklerini bildiriyoruz.
 
+  //istersek methotlari acik bir sekilde de yazabiliriz.
+  void increment2() {
+    emit(state + 1);
+  }
+}
+
+class StringCubit extends Cubit<String> {
+  // Başlangıç durumu boş bir string
+  StringCubit() : super('');
+
+  // Metni güncelleyen bir fonksiyon
+  void updateText(String newText) {
+    emit(newText);
+  }
+
+  // Mevcut metni temizleyen bir fonksiyon
+  void clearText() {
+    emit('');
+  }
+
+  // Mevcut metne yeni bir metin ekleyen bir fonksiyon
+  void appendText(String textToAppend) {
+    emit(state + textToAppend);
+  }
 }
