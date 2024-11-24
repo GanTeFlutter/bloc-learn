@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_learn/future/bloc_learn_cubit1/cubit/home_view_cubit.dart';
+import 'package:flutter_bloc_learn/future/cubit/bloc_learn_cubit1/cubit/home_view_cubit.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

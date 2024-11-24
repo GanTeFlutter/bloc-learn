@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_learn/future/bloc_learn_cubit1/cubit/home_view_cubit.dart';
-import 'package:flutter_bloc_learn/future/bloc_learn_cubit1/view/home_view.dart';
-import 'package:flutter_bloc_learn/future/bloc_learn_cubit1/view/string_cubit_view.dart';
-import 'package:flutter_bloc_learn/future/bloc_learn_cubit1/view/string_cubit_view2.dart';
+import 'package:flutter_bloc_learn/future/bloc_builder_type/bloc/spesifik_bloc_enjecte.dart';
+import 'package:flutter_bloc_learn/future/bloc_builder_type/view/home_view3.dart';
+import 'package:flutter_bloc_learn/future/cubit/bloc_learn_cubit1/cubit/home_view_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,10 +23,13 @@ class MyApp extends StatelessWidget {
       //Açıklama alt kısmda verilmiştir.
       home: MultiBlocProvider(
         providers: [
+          //cubit
           BlocProvider(create: (context) => CounterCubit()),
           BlocProvider(create: (context) => StringCubit()),
+          //bloc type 
+          BlocProvider(create: (context) => UcuncuOrnekCubit()),
         ],
-        child: const StringCubitView2(),
+        child: const HomeView3(),
       ),
     );
   }
