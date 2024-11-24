@@ -17,9 +17,11 @@ class CounterCubit extends Cubit<int> {
   }
 }
 
+//istediğimiz gibi bir cubit oluşturabiliriz.
+
 class StringCubit extends Cubit<String> {
   // Başlangıç durumu boş bir string
-  StringCubit() : super('');
+  StringCubit() : super('Başlangıç metni');
 
   // Metni güncelleyen bir fonksiyon
   void updateText(String newText) {
