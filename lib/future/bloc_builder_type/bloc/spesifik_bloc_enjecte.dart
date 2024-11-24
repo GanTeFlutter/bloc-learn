@@ -26,7 +26,7 @@ class UcuncuOrnekCubit extends Cubit<String> {
 
   void appendText(String textToAppend) {
     emit(state + textToAppend);
-    //burda state uzunluğunu kontrol ediyoruz.
+    //view state uzunluğunu kontrol ediyoruz.
     //view da when parametresine 10 dan büyük olunca yeniden çizdir diyoruz.
     //debugdan artisi izliyoruz
     debugPrint('state: ${state.length}');

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_learn/future/bloc_builder_type/bloc/spesifik_bloc_enjecte.dart';
-import 'package:flutter_bloc_learn/future/bloc_builder_type/view/home_view3.dart';
-import 'package:flutter_bloc_learn/future/cubit/bloc_learn_cubit1/cubit/home_view_cubit.dart';
+import 'package:flutter_bloc_learn/future/bloc_selector_learn.dart/user_view.dart';
+import 'package:flutter_bloc_learn/product/init/app_initialize.dart';
+import 'package:flutter_bloc_learn/product/init/state_initialize.dart';
 
-void main() {
-  runApp(const MyApp());
+//Main dosyamız temiz olsun diye AppInitialize ve StateInitialize sınıflarını oluşturduk.
+//BlocProvider ve MultiBlocProvider kullanımını StateInitialize sınıfında görebilirsiniz.
+Future<void> main() async {
+  await AppInitialize().make();
+  runApp(const StateInitialize(child: _MyApp()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class _MyApp extends StatelessWidget {
+  const _MyApp();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,37 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      //MultiBlocProvider ile birden fazla cubitimizi uygulamamıza ekleyebiliriz.
-      //Açıklama alt kısmda verilmiştir.
-      home: MultiBlocProvider(
-        providers: [
-          //cubit
-          BlocProvider(create: (context) => CounterCubit()),
-          BlocProvider(create: (context) => StringCubit()),
-          //bloc type 
-          BlocProvider(create: (context) => UcuncuOrnekCubit()),
-        ],
-        child: const HomeView3(),
-      ),
+      home: const UserProfilePage(),
     );
   }
 }
-
-/*
-Tek bir cubitimiz var sa aşşağıdaki gibi bir kullanım yapabiliriz.
- home: BlocProvider(
-        create: (context) => CounterCubit(),
-        child: const StringCubitView(),
-      ),
-
-ancak birden fazla cubitimiz varsa aşşağıdaki gibi bir kullanım yapabiliriz.
-  home: MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (context) => CounterCubit()),
-          BlocProvider(create: (context) => StringCubit()),
-        ],
-        child: const HomeView(),
-      ),
-bu şekilde birden fazla cubitimizi uygulamamıza ekleyebiliriz.      
-
-*/

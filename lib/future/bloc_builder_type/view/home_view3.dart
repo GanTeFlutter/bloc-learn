@@ -26,8 +26,8 @@ class _HomeView3State extends State<HomeView3> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ///-1
-            // BlocBuilder ile CounterCubit cubitini dinliyoruz.
-            // alta nsadece bir blocBuilder var stati dinleyip icindeki texti yeniden cizdiriyor.
+            //blocBuilder stati dinleyip icindeki texti yeniden cizdiriyor.
+            //Burdaki Cubit Sınıfı Main.dart dosyasında MultiBlocProvider veya BlocProvider ile uygulamaya eklenmiş olmalıdır.
             BlocBuilder<CounterCubit, int>(builder: (context, state) {
               return Text('Counter Value: $state');
             }),
@@ -36,7 +36,7 @@ class _HomeView3State extends State<HomeView3> {
 
             ///-2
             //Burada ise BlocBuilder bloc parametresine EkranaYazdir cubitini veriyoruz.
-            //EkranaYazdir Main.dart dosyasında MultiBlocProvider ile uygulamaya eklenmedi fakat
+            //EkranaYazdir Main.dart dosyasında MultiBlocProvider veye BlocProvider ile uygulamaya eklenmedik fakat
             //bloc parametresine verdiğimiz için bu cubiti dinleyebiliyoruz.
             //Yani sadece buradaki text widgetine enjekte edilmiş oluyor.
             BlocBuilder<EkranaYazdir, String>(
@@ -49,8 +49,7 @@ class _HomeView3State extends State<HomeView3> {
 
             ///-3
             //Burada ise buildWhen parametresi ile state değişikliğini kontrol ediyoruz.
-            //state uzunluğu 10 dan büyük olduğunda builder fonksiyonu çağrılır ve widget yeniden inşa edilir.
-
+            //state uzunluğu 10 dan büyük olduğunda builder fonksiyonu oluşturulur ve widget yeniden inşa edilir.
             BlocBuilder<UcuncuOrnekCubit, String>(
               buildWhen: (previous, current) {
                 //state uzunluğu 10 dan büyük olduğunda yeniden çizdir.
