@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_learn/future/bloc_builder_type/bloc/spesifik_bloc_enjecte.dart';
+import 'package:flutter_bloc_learn/future/bloc_counter/bloc/counter_bloc.dart';
+import 'package:flutter_bloc_learn/future/bloc_market_card/bloc/basketapp_bloc.dart';
 import 'package:flutter_bloc_learn/future/bloc_selector_learn.dart/user_cubit.dart';
 import 'package:flutter_bloc_learn/future/cubit/bloc_learn_cubit1/cubit/home_view_cubit.dart';
 
@@ -21,6 +23,12 @@ class StateInitialize extends StatelessWidget {
           BlocProvider(create: (context) => UcuncuOrnekCubit()),
           //BlocSelector kullanımı için
           BlocProvider(create: (context) => UserProfileCubit()),
+          //
+          BlocProvider(create: (context) => CounterBloc6()),
+          //
+          //Basket
+          BlocProvider(create: (context) => BasketappBloc()),
+
         ],
         child: child,
       );

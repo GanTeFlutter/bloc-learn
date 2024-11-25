@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_learn/future/bloc_selector_learn.dart/user_view.dart';
+import 'package:flutter_bloc_learn/future/bloc_market_card/home/basket_view.dart';
 import 'package:flutter_bloc_learn/product/init/app_initialize.dart';
 import 'package:flutter_bloc_learn/product/init/state_initialize.dart';
 
@@ -20,7 +20,7 @@ class _MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const UserProfilePage(),
+      home: CoffeeScreen(),
     );
   }
 }
