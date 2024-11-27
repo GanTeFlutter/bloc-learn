@@ -18,13 +18,15 @@ class BasketappBloc extends Bloc<BasketappEvent, BasketappState> {
     debugPrint('--B-Sepete eklendi');
   }
 
-  void _removeBasket(RemoveBasket event, Emitter<BasketappState> emit) {
-    _basketList.remove(event.coffeeModel);
-    emit(BasketListEmit(List.of(_basketList)));
-  }
-
   void _emitBasketList(EmitBasketList event, Emitter<BasketappState> emit) {
     emit(BasketListEmit(List.of(_basketList)));
     debugPrint('--B-Sepet listesi emit edildi');
+  }
+
+  void _removeBasket(RemoveBasket event, Emitter<BasketappState> emit) {
+    _basketList.remove(event.coffeeModel);
+    emit(BasketState(
+        List.of(_basketList), _basketList.length)); // BasketState'i kullanmak daha uygun olur
+    debugPrint('--B-Sepetinizden silindi');
   }
 }
