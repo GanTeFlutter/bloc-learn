@@ -12,33 +12,33 @@ class HomeView6 extends StatefulWidget {
 class _HomeView6State extends State<HomeView6> {
   @override
   Widget build(BuildContext context) {
-    final _blocinstance = context.read<CounterBloc6>();
+    final blocinstance = context.read<CounterBloc6>();
     return Scaffold(
       appBar: AppBar(
         title: BlocBuilder(
             builder: (context, state) {
               return Text('Counter Value: $state');
             },
-            bloc: _blocinstance),
+            bloc: blocinstance),
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           FloatingActionButton(
             onPressed: () {
-              _blocinstance.add(CounterIncrementPressed());
+              blocinstance.add(CounterIncrementPressed());
             },
             child: const Icon(Icons.add),
           ),
           FloatingActionButton(
             onPressed: () {
-              _blocinstance.add(CounterDecrementPressed());
+              blocinstance.add(CounterDecrementPressed());
             },
             child: const Icon(Icons.remove),
           ),
           FloatingActionButton(
             onPressed: () {
-              _blocinstance.add(CounterIncrementPressed());
+              blocinstance.add(CounterIncrementPressed());
             },
             child: const Icon(Icons.read_more),
           ),
@@ -52,9 +52,9 @@ class _HomeView6State extends State<HomeView6> {
               onChanged: (value) {
                 final parsedValue = int.tryParse(value);
                 if (parsedValue != null) {
-                  _blocinstance.add(ParemetreliDenem(parsedValue));
+                  blocinstance.add(ParemetreliDenem(parsedValue));
                 } else {
-                  print("Geçersiz bir sayı girdiniz");
+                  debugPrint("Geçersiz bir sayı girdiniz");
                 }
               },
             ),
