@@ -39,6 +39,5 @@ class CustomShowDialog extends StatelessWidget {
         ),
       ],
     );
-    ;
   }
 }

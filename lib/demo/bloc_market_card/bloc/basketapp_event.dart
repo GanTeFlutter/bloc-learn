@@ -16,6 +16,11 @@ class RemoveBasket extends BasketappEvent {
   RemoveBasket({required this.coffeeModel});
 }
 
+class EmitBasketModelMarketEkrani extends BasketappEvent {
+  final CoffeeModel coffeeModel;
+  EmitBasketModelMarketEkrani({required this.coffeeModel});
+}
+
 class EmitBasketUrunSayisi extends BasketappEvent {}
 
 class UpdateBasket extends BasketappEvent {}

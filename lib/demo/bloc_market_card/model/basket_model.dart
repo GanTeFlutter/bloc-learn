@@ -2,16 +2,23 @@ import 'package:flutter_bloc_learn/demo/bloc_market_card/model/basket_item_model
 
 //Sepetteki Ürünler
 class BasketModel {
-  //Sepetteki ürünlerin listesi ve toplam fiyatı item  BasketItemModel alıyoruz.
+  //Sepetteki ürünlerin listesi 
   final List<BasketItemModel> items;
 
   BasketModel({required this.items});
 
+  //Sepetteki toplam fiyat
   double get totalPrice => items.fold(0, (sum, item) => sum + item.totalPrice);
 
+  //Sepetteki toplam ürün miktarı
   int get totalQuantity => items.fold(0, (sum, item) => sum + item.quantity);
+}
 
-  double calculateTotalPrice() {
+// fold<T>(T initialValue, T Function(T previousValue, E element) combine)
+/**
+ * 
+ * Yukarıdaki fonksiyoların uzun kullanımları 
+ *   double calculateTotalPrice() {
     double totalPrice = 0;
     for (var item in items) {
       totalPrice += item.totalPrice;
@@ -27,6 +34,4 @@ class BasketModel {
     }
     return totalQuantity; // Sonuç olarak tüm ürünlerin toplam miktarını döndür.
   }
-}
-
-// fold<T>(T initialValue, T Function(T previousValue, E element) combine)
+ */

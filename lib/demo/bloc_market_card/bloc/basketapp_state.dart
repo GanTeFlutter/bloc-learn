@@ -1,3 +1,4 @@
+import 'package:flutter_bloc_learn/demo/bloc_market_card/model/basket_model.dart';
 import 'package:flutter_bloc_learn/demo/bloc_market_card/model/coffe_model.dart';
 import 'package:meta/meta.dart';
 
@@ -21,6 +22,11 @@ class BasketListEmit extends BasketappState {
   final List<CoffeeModel> basketList;
 
   BasketListEmit(this.basketList);
+}
+
+class BasketBasketModel extends BasketappState {
+  final List<BasketModel> basketModel;
+  BasketBasketModel(this.basketModel);
 }
 
 class BasketappError extends BasketappState {
