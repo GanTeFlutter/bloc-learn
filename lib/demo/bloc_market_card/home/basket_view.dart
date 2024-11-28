@@ -45,11 +45,24 @@ class _BasketViewState extends BasketViewModel {
                     color: Colors.red,
                     borderRadius: BorderRadius.circular(50),
                   ),
-                  child: BlocBuilder<BasketappBloc, BasketappState>(
+
+                  //Abb Barındaki sepete eklenen ürün sayısı
+                  child: BlocConsumer<BasketappBloc, BasketappState>(
+                    listener: (context, state) {
+                      if (state is BasketState && ModalRoute.of(context)?.isCurrent == true) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Ürün sepete eklendi'),
+                          ),
+                        );
+                      }
+                    },
                     builder: (context, state) {
                       if (state is BasketState) {
-                        return Text(state.basketList.length.toString(),
-                            style: const TextStyle(color: Colors.white));
+                        return Text(
+                          state.totalCount.toString(),
+                          style: const TextStyle(color: Colors.white),
+                        );
                       }
                       return const Text('0');
                     },

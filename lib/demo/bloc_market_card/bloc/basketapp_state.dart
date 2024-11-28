@@ -13,8 +13,8 @@ class BasketListLoading extends BasketappState {}
 class BasketState extends BasketappState {
   final List<CoffeeModel> basketList;
   final int totalCount;
-
-  BasketState(this.basketList, this.totalCount);
+  final double totalPrice;
+  BasketState(this.basketList, this.totalCount, this.totalPrice);
 }
 
 class BasketListEmit extends BasketappState {
