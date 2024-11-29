@@ -2,8 +2,8 @@ import 'package:flutter_bloc_learn/demo/bloc_market_card/model/basket_item_model
 
 //Sepetteki Ürünler
 class BasketModel {
-  //Sepetteki ürünlerin listesi 
-  final List<BasketItemModel> items;
+  //Sepetteki ürünlerin listesi
+  List<BasketItemModel> items;
 
   BasketModel({required this.items});
 
