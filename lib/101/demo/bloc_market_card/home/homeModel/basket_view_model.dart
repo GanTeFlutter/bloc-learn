@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_learn/101/demo/bloc_market_card/home/basket_view.dart';
+import 'package:flutter_bloc_learn/101/demo/bloc_market_card/home/home_view.dart';
 import 'package:flutter_bloc_learn/101/demo/bloc_market_card/model/coffe_model.dart';
 
-abstract class BasketViewModel extends State<BasketView> {
+abstract class BasketViewModel extends State<HomeView> {
   final List<CoffeeModel> coffeeList = [
     const CoffeeModel(
       id: 1,

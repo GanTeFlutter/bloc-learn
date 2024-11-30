@@ -18,7 +18,6 @@ class BasketMarketEkrani extends StatefulWidget {
 class _BasketMarketEkraniState extends State<BasketMarketEkrani> {
   @override
   Widget build(BuildContext context) {
-    debugPrint('--BasketMarketEkrani build');
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

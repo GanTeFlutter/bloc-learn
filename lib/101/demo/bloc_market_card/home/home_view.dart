@@ -6,21 +6,21 @@ import 'package:flutter_bloc_learn/101/demo/bloc_market_card/bloc/basketapp_stat
 import 'package:flutter_bloc_learn/101/demo/bloc_market_card/home/basket_market_ekrani.dart';
 import 'package:flutter_bloc_learn/101/demo/bloc_market_card/home/homeModel/basket_view_model.dart';
 
-class BasketView extends StatefulWidget {
-  const BasketView({super.key});
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
 
   @override
-  State<BasketView> createState() => _BasketViewState();
+  State<HomeView> createState() => _HomeViewState();
 }
 
-class _BasketViewState extends BasketViewModel {
+class _HomeViewState extends BasketViewModel {
   @override
   Widget build(BuildContext context) {
-    final blocins = context.read<BasketappBloc>();
+    final bloc = context.read<BasketappBloc>();
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BasketView'),
+        title: const Text('HomeView'),
         actions: [
           Stack(
             children: [
@@ -80,6 +80,7 @@ class _BasketViewState extends BasketViewModel {
               shrinkWrap: true,
               itemCount: coffeeList.length,
               itemBuilder: (context, index) {
+                final coffeModel = coffeeList[index];
                 return ListTile(
                   title: Text(coffeeList[index].name),
                   subtitle: Text(coffeeList[index].description),
@@ -91,11 +92,8 @@ class _BasketViewState extends BasketViewModel {
                         const Spacer(),
                         IconButton(
                             onPressed: () {
-                              // blocinstance.add(
-                              //   AddBasket(
-                              //     coffeeModel: coffeeList[index],
-                              //   ),
-                              // );
+                              bloc.add(HomeAddBasket(coffeeModel: coffeeList[index], quantity: 1));
+                              debugPrint('--HomeView--IconButton--Sepete eklendi');
                             },
                             icon: const Icon(Icons.shopping_cart_checkout_outlined)),
                       ],
