@@ -9,27 +9,15 @@ abstract class BasketappState {}
 
 class BasketappInitial extends BasketappState {}
 
-class BasketListLoading extends BasketappState {}
-
 class BasketState extends BasketappState {
-  final List<CoffeeModel> basketList;
-  final int totalCount;
-  final double totalPrice;
-  BasketState(this.basketList, this.totalCount, this.totalPrice);
-}
-
-class BasketListEmit extends BasketappState {
-  final List<CoffeeModel> basketList;
-
-  BasketListEmit(this.basketList);
-}
-
-class BasketBasketModel extends BasketappState {
-  final List<BasketModel> basketModel;
-  BasketBasketModel(this.basketModel);
+  final BasketModel stateBasketModel;
+  final int toplamAdet;
+  final double toplamFiyat;
+  BasketState(
+      {required this.stateBasketModel, required this.toplamAdet, required this.toplamFiyat});
 }
 
 class BasketappError extends BasketappState {
-  final String message;
-  BasketappError(this.message);
+  final String errorMessage;
+  BasketappError({required this.errorMessage});
 }

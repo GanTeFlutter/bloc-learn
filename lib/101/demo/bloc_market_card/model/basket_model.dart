@@ -3,9 +3,10 @@ import 'package:flutter_bloc_learn/101/demo/bloc_market_card/model/basket_item_m
 //Sepetteki Ürünler
 class BasketModel {
   //Sepetteki ürünlerin listesi
+  //Yani sepetimiz Burası
   List<BasketItemModel> items;
 
-  BasketModel({required this.items});
+  BasketModel({this.items = const []});
 
   //Sepetteki toplam fiyat
   double get totalPrice => items.fold(0, (sum, item) => sum + item.totalPrice);

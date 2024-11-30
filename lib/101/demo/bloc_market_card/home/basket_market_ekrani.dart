@@ -28,145 +28,145 @@ class _BasketMarketEkraniState extends State<BasketMarketEkrani> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            BlocConsumer<BasketappBloc, BasketappState>(
-              listener: (context, state) {
-                if (state is BasketState && ModalRoute.of(context)?.isCurrent == true) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Sepetinizde ${state.basketList.length} ürün bulunmaktadır.'),
-                      duration: const Duration(seconds: 2),
-                    ),
-                  );
-                }
-              },
-              builder: (context, state) {
-                debugPrint('--BasketMarketEkrani BlocConsumer');
-                if (state is BasketappInitial) {
-                  return const Text('');
-                } else if (state is BasketListLoading) {
-                  return const CircularProgressIndicator();
-                } else if (state is BasketState) {
-                  if (state.basketList.isEmpty) {
-                    return const Text('Sepetinizde ürün bulunmamaktadır.');
-                  }
-                  return SizedBox(
-                    height: 500,
-                    child: ListView.builder(
-                      itemCount: state.basketList.length,
-                      itemBuilder: (context, index) {
-                        final item = state.basketList[index];
-                        return Card(
-                          color: Colors.grey.shade200,
-                          child: ListTile(
-                            title: Text(item.name),
-                            subtitle: Text('${item.price} ₺'),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => BasektDetail(basketModel: item),
-                                ),
-                              );
-                            },
-                            trailing: SizedBox(
-                              width: 100,
-                              child: Row(
-                                children: [
-                                  const Text('Adet: 1'),
-                                  const Spacer(),
-                                  IconButton(
-                                    icon: const Icon(Icons.delete, color: Colors.red),
-                                    onPressed: () {
-                                      context.read<BasketappBloc>().add(
-                                            RemoveBasket(coffeeModel: item),
-                                          );
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  );
-                } else if (state is BasketappError) {
-                  return Text(state.message);
-                } else {
-                  return const Text('Bilinmeyen bir durum oluştu!');
-                }
-              },
-            ),
+            // BlocConsumer<BasketappBloc, BasketappState>(
+            //   listener: (context, state) {
+            //     if (state is BasketState && ModalRoute.of(context)?.isCurrent == true) {
+            //       ScaffoldMessenger.of(context).showSnackBar(
+            //         SnackBar(
+            //           content: Text(''),
+            //           duration: const Duration(seconds: 2),
+            //         ),
+            //       );
+            //     }
+            //   },
+            //   builder: (context, state) {
+            //     debugPrint('--BasketMarketEkrani BlocConsumer');
+            //     if (state is BasketappInitial) {
+            //       return const Text('');
+            //     } else if (state is BasketListLoading) {
+            //       return const CircularProgressIndicator();
+            //     } else if (state is BasketState) {
+            //       if (state.basketList.isEmpty) {
+            //         return const Text('Sepetinizde ürün bulunmamaktadır.');
+            //       }
+            //       return SizedBox(
+            //         height: 500,
+            //         child: ListView.builder(
+            //           itemCount: state.basketList.length,
+            //           itemBuilder: (context, index) {
+            //             final item = state.basketList[index];
+            //             return Card(
+            //               color: Colors.grey.shade200,
+            //               child: ListTile(
+            //                 title: Text(item.name),
+            //                 subtitle: Text('${item.price} ₺'),
+            //                 onTap: () {
+            //                   Navigator.push(
+            //                     context,
+            //                     MaterialPageRoute(
+            //                       builder: (context) => BasektDetail(basketModel: item),
+            //                     ),
+            //                   );
+            //                 },
+            //                 trailing: SizedBox(
+            //                   width: 100,
+            //                   child: Row(
+            //                     children: [
+            //                       const Text('Adet: 1'),
+            //                       const Spacer(),
+            //                       IconButton(
+            //                         icon: const Icon(Icons.delete, color: Colors.red),
+            //                         onPressed: () {
+            //                           context.read<BasketappBloc>().add(
+            //                                 RemoveBasket(coffeeModel: item),
+            //                               );
+            //                         },
+            //                       ),
+            //                     ],
+            //                   ),
+            //                 ),
+            //               ),
+            //             );
+            //           },
+            //         ),
+            //       );
+            //     } else if (state is BasketappError) {
+            //       return Text(state.message);
+            //     } else {
+            //       return const Text('Bilinmeyen bir durum oluştu!');
+            //     }
+            //   },
+            // ),
             const Spacer(),
-            BlocBuilder<BasketappBloc, BasketappState>(
-              builder: (context, state) {
-                if (state is BasketState) {
-                  return _satinAlma(context, state.totalPrice);
-                }
-                return const Text('');
-              },
-            ),
+            // BlocBuilder<BasketappBloc, BasketappState>(
+            //   builder: (context, state) {
+            //     if (state is BasketState) {
+            //       return _satinAlma(context, state.totalPrice);
+            //     }
+            //     return const Text('');
+            //   },
+            // ),
           ],
         ),
       ),
     );
   }
 
-  Container _satinAlma(BuildContext context, double totalPrice) {
-    return Container(
-        height: MediaQuery.of(context).size.height * 0.1,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.grey.shade200,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Total Price'),
-                BlocBuilder<BasketappBloc, BasketappState>(
-                  builder: (context, state) {
-                    return Text(
-                      state is BasketState ? '${state.totalPrice} ₺' : '0 ₺',
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium
-                          ?.copyWith(color: Colors.brown, fontWeight: FontWeight.bold),
-                    );
-                  },
-                )
-              ],
-            ),
-            ElevatedButton(
-              onPressed: () => showDialog(
-                context: context,
-                builder: (context) => const CustomShowDialog(
-                  title: 'Herşey Hazır :)',
-                  aciklama: 'Siparişinizi tamamlamak istiyor musunuz?',
-                  disableText: 'Düzenle',
-                  enableText: 'Tamamla',
-                ),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.brown,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-              child: Text(
-                'Complete Order',
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.white),
-              ),
-            ),
-          ],
-        ));
-  }
+  // Container _satinAlma(BuildContext context, double totalPrice) {
+  //   return Container(
+  //       height: MediaQuery.of(context).size.height * 0.1,
+  //       width: double.infinity,
+  //       decoration: BoxDecoration(
+  //         color: Colors.grey.shade200,
+  //         borderRadius: const BorderRadius.only(
+  //           topLeft: Radius.circular(20),
+  //           topRight: Radius.circular(20),
+  //         ),
+  //       ),
+  //       child: Row(
+  //         mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //         children: [
+  //           Column(
+  //             mainAxisAlignment: MainAxisAlignment.center,
+  //             children: [
+  //               const Text('Total Price'),
+  //               BlocBuilder<BasketappBloc, BasketappState>(
+  //                 builder: (context, state) {
+  //                   return Text(
+  //                     state is BasketState ? '${state.totalPrice} ₺' : '0 ₺',
+  //                     style: Theme.of(context)
+  //                         .textTheme
+  //                         .titleMedium
+  //                         ?.copyWith(color: Colors.brown, fontWeight: FontWeight.bold),
+  //                   );
+  //                 },
+  //               )
+  //             ],
+  //           ),
+  //           ElevatedButton(
+  //             onPressed: () => showDialog(
+  //               context: context,
+  //               builder: (context) => const CustomShowDialog(
+  //                 title: 'Herşey Hazır :)',
+  //                 aciklama: 'Siparişinizi tamamlamak istiyor musunuz?',
+  //                 disableText: 'Düzenle',
+  //                 enableText: 'Tamamla',
+  //               ),
+  //             ),
+  //             style: ElevatedButton.styleFrom(
+  //               backgroundColor: Colors.brown,
+  //               shape: RoundedRectangleBorder(
+  //                 borderRadius: BorderRadius.circular(20),
+  //               ),
+  //             ),
+  //             child: Text(
+  //               'Complete Order',
+  //               style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.white),
+  //             ),
+  //           ),
+  //         ],
+  //       ));
+  // }
 }
 
 

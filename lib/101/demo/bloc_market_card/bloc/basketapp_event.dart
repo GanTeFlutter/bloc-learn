@@ -4,27 +4,15 @@ import 'package:meta/meta.dart';
 @immutable
 abstract class BasketappEvent {}
 
+class HomeAddBasket extends BasketappEvent {
+  final CoffeeModel coffeeModel;
+  final int quantity;
+
+  HomeAddBasket({required this.coffeeModel, required this.quantity});
+}
+
 class EmitBasketList extends BasketappEvent {}
 
-class AddBasket extends BasketappEvent {
-  final CoffeeModel coffeeModel;
-  AddBasket({required this.coffeeModel});
-}
+class RemoveBasket extends BasketappEvent {}
 
-class RemoveBasket extends BasketappEvent {
-  final CoffeeModel coffeeModel;
-  RemoveBasket({required this.coffeeModel});
-}
-
-class EmitBasketModelMarketEkrani extends BasketappEvent {
-  final CoffeeModel coffeeModel;
-  EmitBasketModelMarketEkrani({required this.coffeeModel});
-}
-
-class EmitBasketUrunSayisi extends BasketappEvent {}
-
-class UpdateBasket extends BasketappEvent {}
-
-class ClearBasket extends BasketappEvent {}
-
-class EvenDeneme extends BasketappEvent {}
+class EmitBasketModelMarketEkrani extends BasketappEvent {}

@@ -16,7 +16,7 @@ class BasketView extends StatefulWidget {
 class _BasketViewState extends BasketViewModel {
   @override
   Widget build(BuildContext context) {
-    final blocinstance = context.read<BasketappBloc>();
+    final blocins = context.read<BasketappBloc>();
 
     return Scaffold(
       appBar: AppBar(
@@ -59,9 +59,9 @@ class _BasketViewState extends BasketViewModel {
                     },
                     builder: (context, state) {
                       if (state is BasketState) {
-                        return Text(
-                          state.totalCount.toString(),
-                          style: const TextStyle(color: Colors.white),
+                        return const Text(
+                          '0',
+                          style: TextStyle(color: Colors.white),
                         );
                       }
                       return const Text('0');
@@ -91,7 +91,11 @@ class _BasketViewState extends BasketViewModel {
                         const Spacer(),
                         IconButton(
                             onPressed: () {
-                              blocinstance.add(AddBasket(coffeeModel: coffeeList[index]));
+                              // blocinstance.add(
+                              //   AddBasket(
+                              //     coffeeModel: coffeeList[index],
+                              //   ),
+                              // );
                             },
                             icon: const Icon(Icons.shopping_cart_checkout_outlined)),
                       ],
