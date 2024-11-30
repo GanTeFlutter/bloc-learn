@@ -1,4 +1,4 @@
-import 'package:flutter_bloc_learn/101/demo/bloc_market_card/model/basket_model.dart';
+import 'package:flutter_bloc_learn/demo/bloc_market_card/model/basket_model.dart';
 import 'package:meta/meta.dart';
 
 // BasketappState.dart
@@ -6,7 +6,9 @@ import 'package:meta/meta.dart';
 @immutable
 abstract class BasketappState {}
 
-class BasketappInitial extends BasketappState {}
+class BasketInitial extends BasketappState {}
+
+class BasketLoading extends BasketappState {}
 
 class BasketState extends BasketappState {
   final BasketModel stateBasketModel;

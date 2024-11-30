@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_learn/demo2/basicbasket/basicbasket_cubit.dart';
-import 'package:flutter_bloc_learn/demo2/model/cars_mod.dart';
+import 'package:flutter_bloc_learn/101/demo2/basicbasket/basicbasket_cubit.dart';
+import 'package:flutter_bloc_learn/101/demo2/model/cars_mod.dart';
 
 class BasicHomeView extends StatefulWidget {
   const BasicHomeView({super.key});

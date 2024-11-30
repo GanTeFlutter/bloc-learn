@@ -1,4 +1,5 @@
-import 'package:flutter_bloc_learn/101/demo/bloc_market_card/model/basket_item_model.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter_bloc_learn/demo/bloc_market_card/model/basket_item_model.dart';
 
 //Sepetteki Ürünler
 class BasketModel {
@@ -9,10 +10,18 @@ class BasketModel {
   BasketModel({this.items = const []});
 
   //Sepetteki toplam fiyat
-  double get totalPrice => items.fold(0, (sum, item) => sum + item.totalPrice);
+  double get toplamfiyat => items.fold(0, (sum, item) => sum + item.totalPrice);
 
   //Sepetteki toplam ürün miktarı
-  int get totalQuantity => items.fold(0, (sum, item) => sum + item.quantity);
+  int get totalMiktar => items.fold(0, (sum, item) => sum + item.miktar);
+
+  BasketModel copyWith({
+    List<BasketItemModel>? items,
+  }) {
+    return BasketModel(
+      items: items ?? this.items,
+    );
+  }
 }
 
 // fold<T>(T initialValue, T Function(T previousValue, E element) combine)

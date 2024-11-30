@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_learn/101/demo/bloc_market_card/bloc/basketapp_bloc.dart';
-import 'package:flutter_bloc_learn/101/demo/bloc_market_card/bloc/basketapp_event.dart';
-import 'package:flutter_bloc_learn/101/demo/bloc_market_card/bloc/basketapp_state.dart';
-import 'package:flutter_bloc_learn/101/demo/bloc_market_card/home/basket_market_ekrani.dart';
-import 'package:flutter_bloc_learn/101/demo/bloc_market_card/home/homeModel/basket_view_model.dart';
+import 'package:flutter_bloc_learn/demo/bloc_market_card/bloc/basketapp_bloc.dart';
+import 'package:flutter_bloc_learn/demo/bloc_market_card/bloc/basketapp_event.dart';
+import 'package:flutter_bloc_learn/demo/bloc_market_card/bloc/basketapp_state.dart';
+import 'package:flutter_bloc_learn/demo/bloc_market_card/home/basket_market_ekrani.dart';
+import 'package:flutter_bloc_learn/demo/bloc_market_card/home/homeModel/basket_view_model.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -47,26 +47,26 @@ class _HomeViewState extends BasketViewModel {
                   ),
 
                   //Abb Barındaki sepete eklenen ürün sayısı
-                  child: BlocConsumer<BasketappBloc, BasketappState>(
-                    listener: (context, state) {
-                      if (state is BasketState && ModalRoute.of(context)?.isCurrent == true) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Ürün sepete eklendi'),
-                          ),
-                        );
-                      }
-                    },
-                    builder: (context, state) {
-                      if (state is BasketState) {
-                        return const Text(
-                          '0',
-                          style: TextStyle(color: Colors.white),
-                        );
-                      }
-                      return const Text('0');
-                    },
-                  ),
+                  // child: BlocConsumer<BasketappBloc, BasketappState>(
+                  //   listener: (context, state) {
+                  //     if (state is BasketState && ModalRoute.of(context)?.isCurrent == true) {
+                  //       ScaffoldMessenger.of(context).showSnackBar(
+                  //         const SnackBar(
+                  //           content: Text('Ürün sepete eklendi'),
+                  //         ),
+                  //       );
+                  //     }
+                  //   },
+                  //   builder: (context, state) {
+                  //     if (state is BasketState) {
+                  //       return const Text(
+                  //         '0',
+                  //         style: TextStyle(color: Colors.white),
+                  //       );
+                  //     }
+                  //     return const Text('0');
+                  //   },
+                  // ),
                 ),
               ),
             ],

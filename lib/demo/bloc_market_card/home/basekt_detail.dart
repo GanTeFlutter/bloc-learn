@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_learn/101/demo/bloc_market_card/model/coffe_model.dart';
+import 'package:flutter_bloc_learn/demo/bloc_market_card/model/coffe_model.dart';
 
 class BasektDetail extends StatefulWidget {
   final CoffeeModel basketModel;

@@ -1,27 +1,28 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter_bloc_learn/101/demo/bloc_market_card/model/coffe_model.dart';
+import 'package:flutter_bloc_learn/demo/bloc_market_card/model/coffe_model.dart';
 
 class BasketItemModel {
   final CoffeeModel coffeeModel;
-  int quantity; 
+  int miktar; 
   BasketItemModel({
     required this.coffeeModel,
-    required this.quantity,
+    required this.miktar,
   });
   // Toplam fiyatı hesaplamak için
   // Ürünün fiyatı ile miktarı çarpıyoruz
   //Miktari da kulanici adeti artiirdigi zaman copy with ile guncelliyoruz
-  double get totalPrice => coffeeModel.price * quantity;
+  double get totalPrice => coffeeModel.price * miktar;
+  
 
   BasketItemModel copyWith({
     CoffeeModel? coffeeModel,
-    int? quantity,
+    int? miktar,
   }) {
     return BasketItemModel(
       coffeeModel: coffeeModel ?? this.coffeeModel,
-      quantity: quantity ?? this.quantity,
+      miktar: miktar ?? this.miktar,
     );
   }
 }
-//quantity=adet
+//miktar=adet
 // totalPrice=Toplam fiyat

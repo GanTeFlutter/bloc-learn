@@ -1,0 +1,88 @@
+//BlocProvider
+
+
+//BlocBuilder
+
+//BlocSelector
+
+//BlocListener 
+
+//BlocConsumer 
+
+`context.watch<BlocA>()`
+`final isPositive = context.select((CounterBloc b) => b.state >= 0);`
+`onPressed: () => context.read<CounterCubit>().increment()`
+
+
+
+ silinen ürünü geri alma işlemi eklenecek 
+   ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('XXXXX Ürün silindi!'),
+                            backgroundColor: Colors.green, // Arka plan rengini yeşil yap
+                            action: SnackBarAction(
+                              label: 'Geri Al',
+                              onPressed: () {
+                                // İşlem geri alındığında yapılacaklar
+                              },
+                            ),
+                            duration: const Duration(seconds: 3),
+                          ),
+                        );
+
+
+kullanım bu şekilde sadeleştirilecek 
+ * switch bloc kullanimi 
+ *  BlocBuilder<BasketappBloc, BasketappState>(
+              builder: (context, state) {
+                return switch (state) {
+                  BasketappInitial() => const Text(''),
+                  BasketListLoading() => const CircularProgressIndicator(),
+                  BasketListEmit() => state.basketList.isEmpty
+                      ? const Text('Sepetinizde ürün bulunmamaktadır.')
+                      : SizedBox(
+                          height: 500,
+                          child: ListView.builder(
+                            itemCount: state.basketList.length,
+                            itemBuilder: (context, index) {
+                              final item = state.basketList[index];
+                              return Card(
+                                color: Colors.grey.shade200,
+                                child: ListTile(
+                                  title: Text(item.name),
+                                  subtitle: Text('${item.price} ₺'),
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => BasektDetail(basketModel: item),
+                                      ),
+                                    );
+                                  },
+                                  trailing: SizedBox(
+                                    width: 100,
+                                    child: Row(
+                                      children: [
+                                        const Text('Adet: 1'),
+                                        const Spacer(),
+                                        IconButton(
+                                          icon: const Icon(Icons.delete, color: Colors.red),
+                                          onPressed: () {
+                                            context.read<BasketappBloc>().add(
+                                                  RemoveBasket(coffeeModel: item),
+                                                );
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                  BasketappError() => Text('Hata: ${state.message}'),
+                  _ => const Text('Bilinmeyen bir durum oluştu!'),
+                };
+              },
+            ),
