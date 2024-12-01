@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_learn/demo/bloc_market_card/bloc/basketapp_event.dart';
 import 'package:flutter_bloc_learn/demo/bloc_market_card/bloc/basketapp_state.dart';
@@ -7,9 +8,8 @@ import 'package:flutter_bloc_learn/demo/bloc_market_card/model/basket_model.dart
 class BasketappBloc extends Bloc<BasketappEvent, BasketappState> {
   BasketappBloc() : super(BasketInitial()) {
     on<HomeAddBasket>(_homeAddBasket);
-    on<EmitBasketList>(_emitBasketList);
+    on<DecreaseBasket>(_decreaseBasket);
     on<RemoveBasket>(_removeBasket);
-    on<EmitBasketModelMarketEkrani>(_basketModelMarketEkrani);
   }
 
   BasketModel _basketModel = BasketModel();
@@ -64,9 +64,57 @@ class BasketappBloc extends Bloc<BasketappEvent, BasketappState> {
     ));
   }
 
-  void _basketModelMarketEkrani(EmitBasketModelMarketEkrani event, Emitter<BasketappState> emit) {}
+  void _decreaseBasket(DecreaseBasket event, Emitter<BasketappState> emit) {
+    debugPrint("--_decreaseBasket--Kontrol et var mi: ");
 
-  void _emitBasketList(EmitBasketList event, Emitter<BasketappState> emit) {}
+    final mevcutItemler = List<BasketItemModel>.from(_basketModel.items);
 
-  void _removeBasket(RemoveBasket event, Emitter<BasketappState> emit) {}
+    //Yuksaridaki ile ayni mantik
+    //Kullanicidan gelen eventteki coffeeModel id ile mevcutItemler listesindeki coffeeModel id leri karsilastiriyoruz
+    //eğer aynı id varsa kontrolEtVarMi ye "i" yi atıyoruz,Yani Mevcut indexini
+
+    int kontrolEtVarMi = _findItemIndex(mevcutItemler, event.coffeeModel.id);
+    //islemi sadelestirdik fonksiyonu assagida tanimladik en altta
+    if (kontrolEtVarMi != -1) {
+      final listeninicindekiGuncellenecekModel = mevcutItemler[kontrolEtVarMi];
+      //azaltma işlemi yapabilmek için > 1 kontrolü yapılıyor
+      if (listeninicindekiGuncellenecekModel.miktar > 1) {
+        mevcutItemler[kontrolEtVarMi] = listeninicindekiGuncellenecekModel.copyWith(
+          miktar: listeninicindekiGuncellenecekModel.miktar - event.quantity,
+        );
+      } else {
+        //Eğer miktar 1 den küçükse, o ürünü listeden çıkarıyoruz
+        mevcutItemler.removeAt(kontrolEtVarMi);
+      }
+    }
+    _basketModel = _basketModel.copyWith(items: mevcutItemler);
+    emit(BasketState(
+      stateBasketModel: _basketModel,
+      toplamAdet: _basketModel.totalMiktar,
+      toplamFiyat: _basketModel.toplamfiyat,
+    ));
+  }
+
+  void _removeBasket(RemoveBasket event, Emitter<BasketappState> emit) {
+    final mevcutItemler = List<BasketItemModel>.from(_basketModel.items);
+    int kontrolEtVarMi = _findItemIndex(mevcutItemler, event.coffeeModel.id);
+    if (kontrolEtVarMi != -1) {
+      mevcutItemler.removeAt(kontrolEtVarMi);
+    }
+    _basketModel = _basketModel.copyWith(items: mevcutItemler);
+    emit(BasketState(
+      stateBasketModel: _basketModel,
+      toplamAdet: _basketModel.totalMiktar,
+      toplamFiyat: _basketModel.toplamfiyat,
+    ));
+  }
+
+  int _findItemIndex(List<BasketItemModel> items, int id) {
+    for (int i = 0; i < items.length; i++) {
+      if (items[i].coffeeModel.id == id) {
+        return i;
+      }
+    }
+    return -1;
+  }
 }

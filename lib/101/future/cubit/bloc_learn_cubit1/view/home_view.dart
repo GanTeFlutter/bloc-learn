@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_learn/101/future/cubit/bloc_learn_cubit1/cubit/home_view_cubit.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+class HomeViewW extends StatefulWidget {
+  const HomeViewW({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<HomeViewW> createState() => _HomeViewWState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomeViewWState extends State<HomeViewW> {
   @override
   Widget build(BuildContext context) {
     ///debugPrint metodu ile build metodunun çalışıp çalışmadığını kontrol edebiliriz.
-    debugPrint('HomeView build');
+    debugPrint('HomeViewW build');
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HomeView'),
+        title: const Text('HomeViewW'),
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

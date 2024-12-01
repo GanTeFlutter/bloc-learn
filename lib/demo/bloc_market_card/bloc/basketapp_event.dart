@@ -11,8 +11,15 @@ class HomeAddBasket extends BasketappEvent {
   HomeAddBasket({required this.coffeeModel, required this.quantity});
 }
 
-class EmitBasketList extends BasketappEvent {}
+class DecreaseBasket extends BasketappEvent {
+  final CoffeeModel coffeeModel;
+  final int quantity;
 
-class RemoveBasket extends BasketappEvent {}
+  DecreaseBasket({required this.coffeeModel, required this.quantity});
+}
 
-class EmitBasketModelMarketEkrani extends BasketappEvent {}
+class RemoveBasket extends BasketappEvent {
+  final CoffeeModel coffeeModel;
+
+  RemoveBasket({required this.coffeeModel});
+}

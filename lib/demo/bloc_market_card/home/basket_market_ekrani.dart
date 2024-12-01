@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_learn/demo/bloc_market_card/bloc/basketapp_bloc.dart';
+import 'package:flutter_bloc_learn/demo/bloc_market_card/bloc/basketapp_event.dart';
 import 'package:flutter_bloc_learn/demo/bloc_market_card/bloc/basketapp_state.dart';
 import 'package:flutter_bloc_learn/demo/bloc_market_card/home/basekt_detail.dart';
 import 'package:flutter_bloc_learn/demo/bloc_market_card/model/coffe_model.dart';
@@ -28,8 +29,8 @@ class _BasketMarketEkraniState extends State<BasketMarketEkrani> {
             BlocBuilder<BasketappBloc, BasketappState>(
               builder: (context, state) {
                 return switch (state) {
-                  BasketInitial() => const Text(
-                      'Herhangi bir emit islemi gerceklesmedi veya cubit baslangic durumunda'),
+                  BasketInitial() =>
+                    const Text('Herhangi bir emit islemi gerceklesmedi,cubit baslangic durumunda'),
                   BasketLoading() => const CircularProgressIndicator(),
                   BasketState() => state.stateBasketModel.items.isEmpty
                       ? const Text('Sepetinizde ürün bulunmamaktadır.')
@@ -38,10 +39,7 @@ class _BasketMarketEkraniState extends State<BasketMarketEkrani> {
                           child: ListView.builder(
                             itemCount: state.stateBasketModel.items.length,
                             itemBuilder: (context, index) {
-                              //burda Bloc ta state kısmında BasketState içesinde yayınlanacak statetin ismini stateBasketModel
-                              // yapmıştık ve bu stateBasketModel içindeki items listesinden indexe göre elemanları alıyoruz
                               final item = state.stateBasketModel.items[index].coffeeModel;
-
                               return basketCard(item, context, state, index);
                             },
                           ),
@@ -61,33 +59,50 @@ class _BasketMarketEkraniState extends State<BasketMarketEkrani> {
 
   Card basketCard(CoffeeModel item, BuildContext context, BasketState state, int index) {
     return Card(
-                              color: Colors.grey.shade200,
-                              child: ListTile(
-                                title: Text(item.name),
-                                subtitle: Text('${item.price} ₺'),
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => BasektDetail(basketModel: item),
-                                    ),
-                                  );
-                                },
-                                trailing: SizedBox(
-                                  width: 100,
-                                  child: Row(
-                                    children: [
-                                      Text('Adet: ${state.stateBasketModel.items[index].miktar}'),
-                                      const Spacer(),
-                                      IconButton(
-                                        icon: const Icon(Icons.delete, color: Colors.red),
-                                        onPressed: () {},
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
+      color: Colors.grey.shade200,
+      child: ListTile(
+        title: Text(item.name),
+        subtitle: Text('${item.price} ₺'),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BasektDetail(basketModel: item),
+            ),
+          );
+        },
+        trailing: SizedBox(
+          width: 200,
+          child: Row(
+            children: [
+              IconButton(
+                  onPressed: () {
+                    context
+                        .read<BasketappBloc>()
+                        .add(HomeAddBasket(quantity: 1, coffeeModel: item));
+                  },
+                  icon: const Icon(Icons.add)),
+              Text('Adet: ${state.stateBasketModel.items[index].miktar}'),
+              IconButton(
+                  onPressed: () {
+                    debugPrint('--IconButton--Silme işlemi gerçekleşti');
+                    context
+                        .read<BasketappBloc>()
+                        .add(DecreaseBasket(quantity: 1, coffeeModel: item));
+                  },
+                  icon: const Icon(Icons.remove)),
+              const Spacer(),
+              IconButton(
+                icon: const Icon(Icons.delete, color: Colors.red),
+                onPressed: () {
+                  context.read<BasketappBloc>().add(RemoveBasket(coffeeModel: item));
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   Container _satinAlma(BuildContext context, double totalPrice) {
@@ -175,6 +190,3 @@ class _BasketMarketEkraniState extends State<BasketMarketEkrani> {
         ));
   }
 }
-
-
-

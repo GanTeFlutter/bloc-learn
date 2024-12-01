@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_learn/demo/bloc_market_card/bloc/basketapp_event.dart';
 import 'package:flutter_bloc_learn/101/future/bloc_builder_type/bloc/spesifik_bloc_enjecte.dart';
 import 'package:flutter_bloc_learn/101/future/bloc_counter/bloc/counter_bloc.dart';
 import 'package:flutter_bloc_learn/demo/bloc_market_card/bloc/basketapp_bloc.dart';
@@ -30,7 +29,6 @@ class StateInitialize extends StatelessWidget {
         //
         //Basket-Demo
         BlocProvider(create: (context) => BasketappBloc()),
-
         //BlocBuilderType
         BlocProvider(create: (context) => CarCartCubit()),
       ],

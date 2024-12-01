@@ -45,28 +45,26 @@ class _HomeViewState extends BasketViewModel {
                     color: Colors.red,
                     borderRadius: BorderRadius.circular(50),
                   ),
-
-                  //Abb Barındaki sepete eklenen ürün sayısı
-                  // child: BlocConsumer<BasketappBloc, BasketappState>(
-                  //   listener: (context, state) {
-                  //     if (state is BasketState && ModalRoute.of(context)?.isCurrent == true) {
-                  //       ScaffoldMessenger.of(context).showSnackBar(
-                  //         const SnackBar(
-                  //           content: Text('Ürün sepete eklendi'),
-                  //         ),
-                  //       );
-                  //     }
-                  //   },
-                  //   builder: (context, state) {
-                  //     if (state is BasketState) {
-                  //       return const Text(
-                  //         '0',
-                  //         style: TextStyle(color: Colors.white),
-                  //       );
-                  //     }
-                  //     return const Text('0');
-                  //   },
-                  // ),
+                  child: BlocConsumer<BasketappBloc, BasketappState>(
+                    listener: (context, state) {
+                      if (state is BasketState && ModalRoute.of(context)?.isCurrent == true) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Ürün sepete eklendi'),
+                          ),
+                        );
+                      }
+                    },
+                    builder: (context, state) {
+                      if (state is BasketState) {
+                        return Text(
+                          state.toplamAdet.toString(),
+                          style: const TextStyle(color: Colors.white),
+                        );
+                      }
+                      return const Text('0');
+                    },
+                  ),
                 ),
               ),
             ],
@@ -80,7 +78,6 @@ class _HomeViewState extends BasketViewModel {
               shrinkWrap: true,
               itemCount: coffeeList.length,
               itemBuilder: (context, index) {
-                final coffeModel = coffeeList[index];
                 return ListTile(
                   title: Text(coffeeList[index].name),
                   subtitle: Text(coffeeList[index].description),
