@@ -22,37 +22,38 @@ class _BasketMarketEkraniState extends State<BasketMarketEkrani> {
       appBar: AppBar(
         title: const Text('BasketMarketEkrani'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            BlocBuilder<BasketappBloc, BasketappState>(
-              builder: (context, state) {
-                return switch (state) {
-                  BasketInitial() =>
-                    const Text('Herhangi bir emit islemi gerceklesmedi,cubit baslangic durumunda'),
-                  BasketLoading() => const CircularProgressIndicator(),
-                  BasketState() => state.stateBasketModel.items.isEmpty
-                      ? const Text('Sepetinizde ürün bulunmamaktadır.')
-                      : SizedBox(
-                          height: 500,
-                          child: ListView.builder(
-                            itemCount: state.stateBasketModel.items.length,
-                            itemBuilder: (context, index) {
-                              final item = state.stateBasketModel.items[index].coffeeModel;
-                              return basketCard(item, context, state, index);
-                            },
-                          ),
-                        ),
-                  BasketappError() => Text('Hata: ${state.errorMessage}'),
-                  _ => const Text('Bilinmeyen bir durum oluştu! Lütfen tekrar deneyiniz.'),
-                };
-              },
-            ),
-            const Spacer(),
-            _satinAlma(context, 0.0),
-          ],
-        ),
+      body: BlocBuilder<BasketappBloc, BasketappState>(
+        builder: (context, state) {
+          return switch (state) {
+            BasketInitial() =>
+              const Text('Herhangi bir emit islemi gerceklesmedi,cubit baslangic durumunda'),
+            BasketLoading() => const CircularProgressIndicator(),
+            BasketState() => state.stateBasketModel.items.isEmpty
+                ? const Text('Sepetinizde ürün bulunmamaktadır.')
+                : Column(
+                    children: [
+                      urunler(state),
+                      const Spacer(),
+                      _satinAlma(context, state.toplamFiyat),
+                    ],
+                  ),
+            BasketappError() => Text('Hata: ${state.errorMessage}'),
+            _ => const Text('Bilinmeyen bir durum oluştu! Lütfen tekrar deneyiniz.'),
+          };
+        },
+      ),
+    );
+  }
+
+  SizedBox urunler(BasketState state) {
+    return SizedBox(
+      height: 500,
+      child: ListView.builder(
+        itemCount: state.stateBasketModel.items.length,
+        itemBuilder: (context, index) {
+          final item = state.stateBasketModel.items[index].coffeeModel;
+          return basketCard(item, context, state, index);
+        },
       ),
     );
   }
@@ -125,19 +126,13 @@ class _BasketMarketEkraniState extends State<BasketMarketEkrani> {
                 const Text('Ürün Miktarı'),
                 BlocBuilder<BasketappBloc, BasketappState>(
                   builder: (context, state) {
-                    if (state is BasketState) {
-                      final item = state.toplamAdet;
-
-                      return Text(
-                        '$item',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium
-                            ?.copyWith(color: Colors.brown, fontWeight: FontWeight.bold),
-                      );
-                    } else {
-                      return const Text('0 ₺');
-                    }
+                    return Text(
+                      state is BasketState ? '${state.toplamAdet}' : '0 ₺',
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium
+                          ?.copyWith(color: Colors.brown, fontWeight: FontWeight.bold),
+                    );
                   },
                 ),
               ],
@@ -148,19 +143,13 @@ class _BasketMarketEkraniState extends State<BasketMarketEkrani> {
                 const Text('Toplam Fiyat'),
                 BlocBuilder<BasketappBloc, BasketappState>(
                   builder: (context, state) {
-                    if (state is BasketState) {
-                      final item = state.toplamFiyat;
-
-                      return Text(
-                        '$item₺',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium
-                            ?.copyWith(color: Colors.brown, fontWeight: FontWeight.bold),
-                      );
-                    } else {
-                      return const Text('0 ₺');
-                    }
+                    return Text(
+                      state is BasketState ? '${state.toplamFiyat}₺' : '0 ₺',
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium
+                          ?.copyWith(color: Colors.brown, fontWeight: FontWeight.bold),
+                    );
                   },
                 ),
               ],

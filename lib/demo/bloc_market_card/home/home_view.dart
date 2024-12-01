@@ -88,7 +88,7 @@ class _HomeViewState extends BasketViewModel {
                         Text(coffeeList[index].price.toString()),
                         const Spacer(),
                         IconButton(
-                            onPressed: () {
+                            onPressed: () {context.read<BasketappBloc>();
                               bloc.add(HomeAddBasket(coffeeModel: coffeeList[index], quantity: 1));
                               debugPrint('--HomeView--IconButton--Sepete eklendi');
                             },
