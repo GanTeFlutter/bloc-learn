@@ -1,4 +1,11 @@
 Merhaba arkadaşlar, bu seride Bloc ve Cubit kullanmayı birlikte öğrenmeye odaklanacağız. Ben de bu süreçte hem kendimi geliştirmeyi hem de edindiğim bilgileri sizinle paylaşmayı amaçlıyorum. Öğrenirken aldığım notlarla sizlere rehber olmayı ve birlikte keyifli bir öğrenme yolculuğu yapmayı hedefliyorum.
+
+Resimlerde gözüken demo kısmına <a href="https://github.com/GanTeFlutter/bloc-learn/tree/main/lib/demo/bloc_market_card" target="_self">buraya</a>
+ tıklayarak ulaşabilirsiniz diğer sayfalarda kendim öğrenemeye çalışırken yaptığım kısımlar var.
+
+
+<hr style="border: 2px solid #000; width: 100%; margin: 20px 0;">
+
 <div>
     <img src="https://github.com/user-attachments/assets/24a49075-f7d9-4450-929c-7d4ad342d7b8" alt="2" width="200" style="margin-right: 10px; margin-bottom: 10px;" />
     <img src="https://github.com/user-attachments/assets/73ecb945-6df2-4759-b877-f72820afe1fa" alt="3" width="200" style="margin-bottom: 10px;" />
