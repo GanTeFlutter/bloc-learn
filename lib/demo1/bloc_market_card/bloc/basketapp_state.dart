@@ -1,4 +1,4 @@
-import 'package:flutter_bloc_learn/demo/bloc_market_card/model/basket_model.dart';
+import 'package:flutter_bloc_learn/demo1/bloc_market_card/model/basket_model.dart';
 import 'package:meta/meta.dart';
 
 // BasketappState.dart

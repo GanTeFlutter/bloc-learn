@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_learn/demo/bloc_market_card/home/home_view.dart';
+import 'package:flutter_bloc_learn/demo1/bloc_market_card/home/home_view.dart';
 import 'package:flutter_bloc_learn/product/init/app_initialize.dart';
 import 'package:flutter_bloc_learn/product/init/state_initialize.dart';
 import 'package:lottie/lottie.dart';

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_learn/demo/bloc_market_card/bloc/basketapp_bloc.dart';
-import 'package:flutter_bloc_learn/demo/bloc_market_card/bloc/basketapp_event.dart';
-import 'package:flutter_bloc_learn/demo/bloc_market_card/bloc/basketapp_state.dart';
-import 'package:flutter_bloc_learn/demo/bloc_market_card/home/basket_market_ekrani.dart';
-import 'package:flutter_bloc_learn/demo/bloc_market_card/home/homeModel/basket_view_model.dart';
+import 'package:flutter_bloc_learn/demo1/bloc_market_card/bloc/basketapp_bloc.dart';
+import 'package:flutter_bloc_learn/demo1/bloc_market_card/bloc/basketapp_event.dart';
+import 'package:flutter_bloc_learn/demo1/bloc_market_card/bloc/basketapp_state.dart';
+import 'package:flutter_bloc_learn/demo1/bloc_market_card/home/basket_market_ekrani.dart';
+import 'package:flutter_bloc_learn/demo1/bloc_market_card/home/homeModel/basket_view_model.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
