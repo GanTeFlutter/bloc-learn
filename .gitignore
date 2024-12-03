@@ -9,6 +9,7 @@
 .history
 .svn/
 migrate_working_dir/
+.android/
 
 # IntelliJ related
 *.iml
@@ -25,6 +26,7 @@ migrate_working_dir/
 **/doc/api/
 **/ios/Flutter/.last_build_id
 .dart_tool/
+.firebase.json
 .flutter-plugins
 .flutter-plugins-dependencies
 .pub-cache/
