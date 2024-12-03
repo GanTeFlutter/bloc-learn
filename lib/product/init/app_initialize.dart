@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_learn/product/service/fire_service/firebase_options.dart';
+import '../service/firebase/zd/firebase_options.dart';
 
 final class AppInitialize {
   Future<void> make() async {
