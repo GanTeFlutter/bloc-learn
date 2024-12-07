@@ -6,3 +6,8 @@ abstract class HomeCategoryEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class HomeCategoryFetchCoffee extends HomeCategoryEvent {
+  final String categoryName;
+  const HomeCategoryFetchCoffee({required this.categoryName});
+}

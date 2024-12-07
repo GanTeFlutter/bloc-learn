@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 abstract class FirebaseBaseService {
-  Future<List<T>> firebaseService2<T>({
+  Future<List<T>> firebaseService<T>({
     required String collectionName,
     required T Function(Map<String, dynamic>) fromJson,
     required String docName,
@@ -12,7 +12,7 @@ class FirebaseService implements FirebaseBaseService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
-  Future<List<T>> firebaseService2<T>({
+  Future<List<T>> firebaseService<T>({
     required String collectionName,
     required T Function(Map<String, dynamic>) fromJson,
     required String docName,

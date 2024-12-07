@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_learn/demo2/bloc_change_by_category/home/deneme_ekran.dart';
+import 'package:flutter_bloc_learn/demo2/bloc_change_by_category/home/home_page.dart';
 import 'package:flutter_bloc_learn/product/init/app_initialize.dart';
 import 'package:flutter_bloc_learn/product/init/state_initialize.dart';
 //Main dosyamız temiz olsun diye AppInitialize ve StateInitialize sınıflarını oluşturduk.
@@ -24,7 +24,7 @@ class _MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         useMaterial3: true,
       ),
-      home: const DenemeEkran(),
+      home: const HomePage(),
     );
   }
 }
