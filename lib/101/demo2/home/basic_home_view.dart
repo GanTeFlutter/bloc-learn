@@ -58,7 +58,8 @@ class _BasicHomeViewState extends State<BasicHomeView> {
                               leading: CircleAvatar(
                                 child: Text(item.quantity.toString()),
                               ),
-                              title: Text("${item.car.brand} ${item.car.model}"),
+                              title:
+                                  Text("${item.car.brand} ${item.car.model}"),
                               subtitle:
                                   Text("${item.car.price}₺ x ${item.quantity}"),
                               trailing: Row(

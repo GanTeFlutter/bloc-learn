@@ -6,6 +6,7 @@ import 'package:flutter_bloc_learn/demo1/bloc_market_card/bloc/basketapp_bloc.da
 import 'package:flutter_bloc_learn/101/future/bloc_selector_learn.dart/user_cubit.dart';
 import 'package:flutter_bloc_learn/101/future/cubit/bloc_learn_cubit1/cubit/home_view_cubit.dart';
 import 'package:flutter_bloc_learn/101/demo2/basicbasket/basicbasket_cubit.dart';
+import 'package:flutter_bloc_learn/demo2/bloc_change_by_category/bloc/home_category_bloc.dart';
 
 class StateInitialize extends StatelessWidget {
   const StateInitialize({super.key, required this.child});
@@ -31,6 +32,7 @@ class StateInitialize extends StatelessWidget {
         BlocProvider(create: (context) => BasketappBloc()),
         //BlocBuilderType
         BlocProvider(create: (context) => CarCartCubit()),
+        BlocProvider(create: (context) => HomeCategoryBloc()),
       ],
       child: child,
     );

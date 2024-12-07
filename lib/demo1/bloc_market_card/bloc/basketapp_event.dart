@@ -1,4 +1,4 @@
-import 'package:flutter_bloc_learn/demo1/bloc_market_card/model/coffe_model.dart';
+import 'package:flutter_bloc_learn/demo1/bloc_market_card/model/coffe_mod.dart';
 import 'package:meta/meta.dart';
 
 @immutable

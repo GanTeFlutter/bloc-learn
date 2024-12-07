@@ -65,7 +65,8 @@ class _HomeView3State extends State<HomeView3> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 FloatingActionButton(
-                    onPressed: () => context.read<UcuncuOrnekCubit>().appendText('a'),
+                    onPressed: () =>
+                        context.read<UcuncuOrnekCubit>().appendText('a'),
                     child: const Icon(Icons.add)),
               ],
             )
@@ -81,7 +82,6 @@ class _HomeView3State extends State<HomeView3> {
     );
   }
 }
-
 
 /*
 previous  = öncesi

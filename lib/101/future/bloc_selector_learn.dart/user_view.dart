@@ -17,7 +17,8 @@ class UserProfilePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             BlocSelector<UserProfileCubit, UserProfileState, String>(
-              selector: (state) => state.profileImage, // Sadece userName seçiyoruz
+              selector: (state) =>
+                  state.profileImage, // Sadece userName seçiyoruz
               builder: (context, image) {
                 return SizedBox(
                   width: 200,
@@ -54,7 +55,9 @@ class UserProfilePage extends StatelessWidget {
             // Profil fotoğrafı değiştirme butonu
             ElevatedButton(
               onPressed: () {
-                context.read<UserProfileCubit>().updateProfileImage('assets/kaydirak.jpg');
+                context
+                    .read<UserProfileCubit>()
+                    .updateProfileImage('assets/kaydirak.jpg');
               },
               child: const Text('Change Profile Image'),
             ),
@@ -85,7 +88,6 @@ class UserProfilePage extends StatelessWidget {
   }
 }
 
-
 /*
 Buradaki kilit nokta, BlocSelector ve BlocBuilder arasındaki farkı anlamaktır.
 
@@ -99,4 +101,4 @@ Bu sayede gereksiz yeniden çizimlerden kaçınılır ve uygulamanın performans
 Bu sayfada BlocBuilder kullansaydık, durum değişikliği olduğunda tüm widget'ların yeniden oluşturulmasına neden olabilirdi. 
 Ancak BlocSelector kullanarak yalnızca ilgilendiğimiz state parçalarını dinledik ve bu parçalar değiştiğinde ilgili widget'ların yeniden oluşturulmasını sağladık. 
 
-*/ 
+*/

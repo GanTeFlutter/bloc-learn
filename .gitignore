@@ -48,4 +48,4 @@ app.*.map.json
 
 
 
-lib/product/service/firebase/zd/firebase_options.dart
+lib/product/service/fireoptions/firebase_options.dart

@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_learn/demo2/bloc_change_by_category/home/home_page_view_model.dart';
-import 'package:flutter_bloc_learn/product/enum/e.firebase.dart';
+import 'package:flutter_bloc_learn/demo2/bloc_change_by_category/mixin/firebase_mixin.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class DenemeEkran extends StatefulWidget {
+  const DenemeEkran({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<DenemeEkran> createState() => _DenemeEkranState();
 }
 
-class _HomePageState extends HomePageViewModel  {
+class _DenemeEkranState extends State<DenemeEkran> with FirebaseMixin {
+  @override
+  void initState() {
+    super.initState();
+    initFirebaseMixin();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(FirebaseDocumentName.ebk.name),
+        title: const Text('DenemeEkran'),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: getFirebaseDataMix,

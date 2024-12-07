@@ -53,7 +53,8 @@ class _HomeViewWState extends State<HomeViewW> {
             ///BlocBuilder ile CounterCubit'ın state'ini dinleyebiliriz.
             ///build metodunun tamamı tetiklenmez.
             BlocBuilder<CounterCubit, int>(
-              builder: (context, count) => Center(child: Text('Counter: $count')),
+              builder: (context, count) =>
+                  Center(child: Text('Counter: $count')),
             ),
             customsizedbox(),
           ],
@@ -64,7 +65,6 @@ class _HomeViewWState extends State<HomeViewW> {
 
   SizedBox customsizedbox() => const SizedBox(height: 35);
 }
-
 
 /*
 context.read

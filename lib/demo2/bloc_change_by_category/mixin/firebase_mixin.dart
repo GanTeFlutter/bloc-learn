@@ -1,14 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc_learn/demo2/bloc_change_by_category/home/home_page.dart';
-import 'package:flutter_bloc_learn/demo2/bloc_change_by_category/mixin/firebase_mixin.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc_learn/demo2/bloc_change_by_category/model/coffee/coffee/coffee.dart';
 import 'package:flutter_bloc_learn/product/enum/e.firebase.dart';
 import 'package:flutter_bloc_learn/product/service/firebase-service/firebase_service.dart';
 
-abstract class HomePageViewModel extends State<HomePage> with FirebaseMixin {
-  final FirebaseService _firebaseService = FirebaseService();
+mixin FirebaseMixin {
+  late final FirebaseService _firebaseService;
+  
+  void initFirebaseMixin() {
+    _firebaseService = FirebaseService();
+  }
 
-  Future<void> getFirebaseData() async {
+  Future<void> getFirebaseDataMix() async {
     debugPrint('-*-Clicked');
     try {
       final List<Coffee> coffeeList = await _firebaseService.firebaseService2(

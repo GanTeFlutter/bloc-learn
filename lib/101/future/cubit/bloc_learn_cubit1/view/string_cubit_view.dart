@@ -25,12 +25,14 @@ class _StringCubitViewState extends State<StringCubitView> {
             BlocBuilder<StringCubit, String>(
               builder: (context, count) => Center(
                   child: Text('StringCubit: $count',
-                      style: const TextStyle(fontSize: 24, color: Colors.green))),
+                      style:
+                          const TextStyle(fontSize: 24, color: Colors.green))),
             ),
             const SizedBox(height: 20),
             // Update Text butonu
             ElevatedButton(
-              onPressed: () => context.read<StringCubit>().updateText('Updated Text'),
+              onPressed: () =>
+                  context.read<StringCubit>().updateText('Updated Text'),
               child: const Text('Update Text'),
             ),
             const SizedBox(height: 20),
@@ -42,7 +44,8 @@ class _StringCubitViewState extends State<StringCubitView> {
             const SizedBox(height: 20),
             // Append Text butonu
             ElevatedButton(
-              onPressed: () => context.read<StringCubit>().appendText(' eklenen metin'),
+              onPressed: () =>
+                  context.read<StringCubit>().appendText(' eklenen metin'),
               child: const Text('Yeni metin ekle'),
             ),
           ],

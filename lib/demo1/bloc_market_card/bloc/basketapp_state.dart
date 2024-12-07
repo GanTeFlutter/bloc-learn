@@ -15,7 +15,9 @@ class BasketState extends BasketappState {
   final int toplamAdet;
   final double toplamFiyat;
   BasketState(
-      {required this.stateBasketModel, required this.toplamAdet, required this.toplamFiyat});
+      {required this.stateBasketModel,
+      required this.toplamAdet,
+      required this.toplamFiyat});
 }
 
 class BasketappError extends BasketappState {

@@ -20,7 +20,8 @@ class BasketappBloc extends Bloc<BasketappEvent, BasketappState> {
     // _basketModel.items demek BasketModel in icindeki  List<BasketItemModel> items; demek
     //yani BasketModel in icindeki items listesine alip mevcutItemler e atadik yeni bir referans ile,from metodu ile
 
-    int kontrolEtVarMi = -1; // İlk başta, aranan öğenin bulunmadığını varsayıyoruz.
+    int kontrolEtVarMi =
+        -1; // İlk başta, aranan öğenin bulunmadığını varsayıyoruz.
     for (int i = 0; i < mevcutItemler.length; i++) {
       //mevcutItemler içerisinde dönüyoruz mevcutItemler içinde de BasketItemModeller var
       //bu BasketItemModel içinde de coffeeModel ve quantity var
@@ -29,7 +30,8 @@ class BasketappBloc extends Bloc<BasketappEvent, BasketappState> {
       //"i"yi atamamızın sebebi, aynı id ye sahip ürün varsa, o ürünün miktarını arttırmak için
 
       if (mevcutItemler[i].coffeeModel.id == event.coffeeModel.id) {
-        kontrolEtVarMi = i; // Şart sağlanıyorsa, o öğenin indeksini kaydediyoruz.
+        kontrolEtVarMi =
+            i; // Şart sağlanıyorsa, o öğenin indeksini kaydediyoruz.
         break; // Öğeyi bulduktan sonra döngüyü sonlandırıyoruz.
       }
     }
@@ -51,7 +53,8 @@ class BasketappBloc extends Bloc<BasketappEvent, BasketappState> {
       );
     } else {
       // -1 dönerse yani sepette yoksa yeni ürün ekle
-      mevcutItemler.add(BasketItemModel(coffeeModel: event.coffeeModel, miktar: event.quantity));
+      mevcutItemler.add(BasketItemModel(
+          coffeeModel: event.coffeeModel, miktar: event.quantity));
     }
     //_basketModeli güncelliyoruz
     // yani BasketModel içindeki items listesini güncelliyoruz
@@ -79,7 +82,8 @@ class BasketappBloc extends Bloc<BasketappEvent, BasketappState> {
       final listeninicindekiGuncellenecekModel = mevcutItemler[kontrolEtVarMi];
       //azaltma işlemi yapabilmek için > 1 kontrolü yapılıyor
       if (listeninicindekiGuncellenecekModel.miktar > 1) {
-        mevcutItemler[kontrolEtVarMi] = listeninicindekiGuncellenecekModel.copyWith(
+        mevcutItemler[kontrolEtVarMi] =
+            listeninicindekiGuncellenecekModel.copyWith(
           miktar: listeninicindekiGuncellenecekModel.miktar - event.quantity,
         );
       } else {

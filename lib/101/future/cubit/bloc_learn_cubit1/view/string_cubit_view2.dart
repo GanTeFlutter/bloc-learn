@@ -30,7 +30,8 @@ class _StringCubitView2State extends State<StringCubitView2> {
               BlocBuilder<StringCubit, String>(
                 builder: (context, state) => Center(
                     child: Text('StringCubit: $state',
-                        style: const TextStyle(fontSize: 24, color: Colors.green))),
+                        style: const TextStyle(
+                            fontSize: 24, color: Colors.green))),
               ),
               customSizedBox(),
               // TextField
@@ -40,28 +41,32 @@ class _StringCubitView2State extends State<StringCubitView2> {
                   // TextField için oluşturulan TextEditingController
                   controller: _textEditingController,
                   decoration: const InputDecoration(
-                      hintText: 'Bir metin giriniz', border: OutlineInputBorder()),
+                      hintText: 'Bir metin giriniz',
+                      border: OutlineInputBorder()),
                 ),
               ),
               customSizedBox(),
               // Update Text butonu
               ElevatedButton(
-                onPressed: () =>
-                    context.read<StringCubit>().updateText(_textEditingController.text),
+                onPressed: () => context
+                    .read<StringCubit>()
+                    .updateText(_textEditingController.text),
                 child: const Text('Update Text'),
               ),
               customSizedBox(),
               // Append Text butonu
               ElevatedButton(
-                onPressed: () =>
-                    context.read<StringCubit>().appendText(_textEditingController.text),
+                onPressed: () => context
+                    .read<StringCubit>()
+                    .appendText(_textEditingController.text),
                 child: const Text('Yeni metin ekle'),
               ),
               customSizedBox(),
               // Clear Text butonu
               ElevatedButton(
                 onPressed: () => context.read<StringCubit>().clearText(),
-                child: const Text('Clear Text', style: TextStyle(color: Colors.red)),
+                child: const Text('Clear Text',
+                    style: TextStyle(color: Colors.red)),
               ),
             ],
           ),

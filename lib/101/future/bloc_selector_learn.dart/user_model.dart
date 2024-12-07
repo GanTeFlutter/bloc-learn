@@ -1,4 +1,3 @@
-
 class UserProfileState {
   final String userName;
   final int age;

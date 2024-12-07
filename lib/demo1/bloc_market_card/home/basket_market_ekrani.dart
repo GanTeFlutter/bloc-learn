@@ -4,7 +4,7 @@ import 'package:flutter_bloc_learn/demo1/bloc_market_card/bloc/basketapp_bloc.da
 import 'package:flutter_bloc_learn/demo1/bloc_market_card/bloc/basketapp_event.dart';
 import 'package:flutter_bloc_learn/demo1/bloc_market_card/bloc/basketapp_state.dart';
 import 'package:flutter_bloc_learn/demo1/bloc_market_card/home/basekt_detail.dart';
-import 'package:flutter_bloc_learn/demo1/bloc_market_card/model/coffe_model.dart';
+import 'package:flutter_bloc_learn/demo1/bloc_market_card/model/coffe_mod.dart';
 import 'package:flutter_bloc_learn/demo1/bloc_market_card/widget/custom_show_dialog.dart';
 
 class BasketMarketEkrani extends StatefulWidget {
@@ -25,8 +25,8 @@ class _BasketMarketEkraniState extends State<BasketMarketEkrani> {
       body: BlocBuilder<BasketappBloc, BasketappState>(
         builder: (context, state) {
           return switch (state) {
-            BasketInitial() =>
-              const Text('Herhangi bir emit islemi gerceklesmedi,cubit baslangic durumunda'),
+            BasketInitial() => const Text(
+                'Herhangi bir emit islemi gerceklesmedi,cubit baslangic durumunda'),
             BasketLoading() => const CircularProgressIndicator(),
             BasketState() => state.stateBasketModel.items.isEmpty
                 ? const Text('Sepetinizde ürün bulunmamaktadır.')
@@ -38,7 +38,8 @@ class _BasketMarketEkraniState extends State<BasketMarketEkrani> {
                     ],
                   ),
             BasketappError() => Text('Hata: ${state.errorMessage}'),
-            _ => const Text('Bilinmeyen bir durum oluştu! Lütfen tekrar deneyiniz.'),
+            _ => const Text(
+                'Bilinmeyen bir durum oluştu! Lütfen tekrar deneyiniz.'),
           };
         },
       ),
@@ -58,7 +59,8 @@ class _BasketMarketEkraniState extends State<BasketMarketEkrani> {
     );
   }
 
-  Card basketCard(CoffeeModel item, BuildContext context, BasketState state, int index) {
+  Card basketCard(
+      CoffeeModel item, BuildContext context, BasketState state, int index) {
     return Card(
       color: Colors.grey.shade200,
       child: ListTile(
@@ -96,7 +98,9 @@ class _BasketMarketEkraniState extends State<BasketMarketEkrani> {
               IconButton(
                 icon: const Icon(Icons.delete, color: Colors.red),
                 onPressed: () {
-                  context.read<BasketappBloc>().add(RemoveBasket(coffeeModel: item));
+                  context
+                      .read<BasketappBloc>()
+                      .add(RemoveBasket(coffeeModel: item));
                 },
               ),
             ],
@@ -128,10 +132,8 @@ class _BasketMarketEkraniState extends State<BasketMarketEkrani> {
                   builder: (context, state) {
                     return Text(
                       state is BasketState ? '${state.toplamAdet}' : '0 ₺',
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium
-                          ?.copyWith(color: Colors.brown, fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: Colors.brown, fontWeight: FontWeight.bold),
                     );
                   },
                 ),
@@ -145,10 +147,8 @@ class _BasketMarketEkraniState extends State<BasketMarketEkrani> {
                   builder: (context, state) {
                     return Text(
                       state is BasketState ? '${state.toplamFiyat}₺' : '0 ₺',
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium
-                          ?.copyWith(color: Colors.brown, fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          color: Colors.brown, fontWeight: FontWeight.bold),
                     );
                   },
                 ),
@@ -172,7 +172,10 @@ class _BasketMarketEkraniState extends State<BasketMarketEkrani> {
               ),
               child: Text(
                 'Siparişi Tamamla',
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.white),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge
+                    ?.copyWith(color: Colors.white),
               ),
             ),
           ],

@@ -27,6 +27,6 @@ class CoffeeModel extends Equatable {
   }
 
   @override
-  int get hashCode => id.hashCode ^ name.hashCode ^ description.hashCode ^ price.hashCode;
+  int get hashCode =>
+      id.hashCode ^ name.hashCode ^ description.hashCode ^ price.hashCode;
 }
-

@@ -2,8 +2,6 @@ import 'package:bloc/bloc.dart';
 
 import 'package:flutter_bloc_learn/101/demo2/model/cars_mod.dart';
 
-
-
 class CarCartCubit extends Cubit<CarCart> {
   CarCartCubit() : super(const CarCart());
 
@@ -12,7 +10,8 @@ class CarCartCubit extends Cubit<CarCart> {
     final currentItems = List<CarCartItem>.from(state.items);
 
     // Sepette ürün zaten varsa miktarı artır
-    final existingItemIndex = currentItems.indexWhere((item) => item.car.id == car.id);
+    final existingItemIndex =
+        currentItems.indexWhere((item) => item.car.id == car.id);
 
     if (existingItemIndex != -1) {
       final existingItem = currentItems[existingItemIndex];
@@ -29,7 +28,8 @@ class CarCartCubit extends Cubit<CarCart> {
 
   // Ürün çıkarma
   void removeItem(String carId) {
-    final updatedItems = state.items.where((item) => item.car.id != carId).toList();
+    final updatedItems =
+        state.items.where((item) => item.car.id != carId).toList();
     emit(state.copyWith(items: updatedItems));
   }
 

@@ -49,6 +49,7 @@ class CarCartItem {
     );
   }
 }
+
 class CarCart {
   final List<CarCartItem> items;
 

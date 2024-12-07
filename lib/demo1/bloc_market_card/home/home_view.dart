@@ -47,7 +47,8 @@ class _HomeViewState extends BasketViewModel {
                   ),
                   child: BlocConsumer<BasketappBloc, BasketappState>(
                     listener: (context, state) {
-                      if (state is BasketState && ModalRoute.of(context)?.isCurrent == true) {
+                      if (state is BasketState &&
+                          ModalRoute.of(context)?.isCurrent == true) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text('Ürün sepete eklendi'),
@@ -88,11 +89,15 @@ class _HomeViewState extends BasketViewModel {
                         Text(coffeeList[index].price.toString()),
                         const Spacer(),
                         IconButton(
-                            onPressed: () {context.read<BasketappBloc>();
-                              bloc.add(HomeAddBasket(coffeeModel: coffeeList[index], quantity: 1));
-                              debugPrint('--HomeView--IconButton--Sepete eklendi');
+                            onPressed: () {
+                              context.read<BasketappBloc>();
+                              bloc.add(HomeAddBasket(
+                                  coffeeModel: coffeeList[index], quantity: 1));
+                              debugPrint(
+                                  '--HomeView--IconButton--Sepete eklendi');
                             },
-                            icon: const Icon(Icons.shopping_cart_checkout_outlined)),
+                            icon: const Icon(
+                                Icons.shopping_cart_checkout_outlined)),
                       ],
                     ),
                   ),
