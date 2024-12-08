@@ -9,19 +9,9 @@ abstract class HomeCategoryState extends Equatable {
 
 class CategoryInitial extends HomeCategoryState {}
 
-class CategoryEBK extends HomeCategoryState {
-  final CoffeBase coffeStateEBK;
-  const CategoryEBK({required this.coffeStateEBK});
-}
-
-class CategorySK extends HomeCategoryState {
-  final CoffeBase coffeStateSK;
-  const CategorySK({required this.coffeStateSK});
-}
-
-class CategorySTK extends HomeCategoryState {
-  final CoffeBase coffeStateSTK;
-  const CategorySTK({required this.coffeStateSTK});
+class CoffeeKategoryState extends HomeCategoryState {
+  final CoffeeKatagori coffeStateK;
+  const CoffeeKategoryState({required this.coffeStateK});
 }
 
 class CategoryError extends HomeCategoryState {

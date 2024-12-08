@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_learn/demo2/bloc_change_by_category/bloc/home_category_bloc.dart';
 import 'package:flutter_bloc_learn/demo2/bloc_change_by_category/home/home_page_view_model.dart';
+import 'package:flutter_bloc_learn/demo2/bloc_change_by_category/model/coffee_katagori.dart';
 import 'package:flutter_bloc_learn/product/enum/e.firebase.dart';
 
 class HomePage extends StatefulWidget {
@@ -44,8 +45,7 @@ class _HomePageState extends HomePageViewModel {
                 ElevatedButton(
                   onPressed: () {
                     debugPrint('--stk-home');
-                    blocService
-                        .add(HomeCategoryFetchCoffee(categoryName: FirebaseDocumentName.stk.name));
+                    blocService.add(HomeCategoryFetchCoffee(categoryName: FirebaseDocumentName.stk.name));
                   },
                   child: const Text('STK'),
                 ),
@@ -62,7 +62,25 @@ class _HomePageState extends HomePageViewModel {
                   mainAxisSpacing: 10,
                 ),
                 itemBuilder: (context, index) {
-                  return const HomeCoffeeCard();
+                  return BlocBuilder<HomeCategoryBloc, HomeCategoryState>(
+                    builder: (context, state) {
+                      if (state is CategoryInitial) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (state is CoffeeKategoryState) {
+                        return HomeCoffeeCard(coffeeKatagori: state.coffeStateK);
+                      } else if (state is CategoryError) {
+                        return Center(
+                          child: Text(state.message),
+                        );
+                      } else {
+                        return const Center(
+                          child: Text('Error-HomePage-'),
+                        );
+                      }
+                    },
+                  );
                 },
               ),
             )
@@ -72,8 +90,10 @@ class _HomePageState extends HomePageViewModel {
 }
 
 class HomeCoffeeCard extends StatelessWidget {
+  final CoffeeKatagori coffeeKatagori;
   const HomeCoffeeCard({
     super.key,
+    required this.coffeeKatagori,
   });
 
   @override
@@ -82,7 +102,10 @@ class HomeCoffeeCard extends StatelessWidget {
       child: Column(
         children: [
           _image(),
-          const Text('Title'),
+          Text(
+            coffeeKatagori.coffeeList[0].name.toString(),
+            style: const TextStyle(fontSize: 20),
+          ),
         ],
       ),
     );

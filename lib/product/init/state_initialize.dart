@@ -7,6 +7,7 @@ import 'package:flutter_bloc_learn/101/future/bloc_selector_learn.dart/user_cubi
 import 'package:flutter_bloc_learn/101/future/cubit/bloc_learn_cubit1/cubit/home_view_cubit.dart';
 import 'package:flutter_bloc_learn/101/demo2/basicbasket/basicbasket_cubit.dart';
 import 'package:flutter_bloc_learn/demo2/bloc_change_by_category/bloc/home_category_bloc.dart';
+import 'package:flutter_bloc_learn/product/enum/e.firebase.dart';
 
 class StateInitialize extends StatelessWidget {
   const StateInitialize({super.key, required this.child});
@@ -32,7 +33,11 @@ class StateInitialize extends StatelessWidget {
         BlocProvider(create: (context) => BasketappBloc()),
         //BlocBuilderType
         BlocProvider(create: (context) => CarCartCubit()),
-        BlocProvider(create: (context) => HomeCategoryBloc()),
+        
+        BlocProvider(
+          create: (context) => HomeCategoryBloc()
+            ..add(HomeCategoryFetchCoffee(categoryName: FirebaseDocumentName.ebk.name)),
+        ),
       ],
       child: child,
     );
@@ -57,3 +62,4 @@ ancak birden fazla cubitimiz varsa aşşağıdaki gibi bir kullanım yapabiliriz
 bu şekilde birden fazla cubitimizi uygulamamıza ekleyebiliriz.      
 
 */
+//        BlocProvider(create: (context) => HomeCategoryBloc()..add( HomeCategoryFetchCoffee(categoryName: FirebaseDocumentName.ebk.name)),

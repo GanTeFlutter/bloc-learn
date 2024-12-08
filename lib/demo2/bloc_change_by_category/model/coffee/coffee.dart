@@ -23,10 +23,7 @@ class Coffee {
     this.rating,
   });
 
-  @override
-  String toString() {
-    return 'Coffee(id: $id, name: $name, description: $description, extra: $extra, image: $image, price: $price, rating: $rating)';
-  }
+
 
   factory Coffee.fromJson(Map<String, dynamic> json) {
     return _$CoffeeFromJson(json);
