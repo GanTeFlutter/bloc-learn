@@ -34,3 +34,5 @@ Demo1, bu kadar arkadaşlar.Anlamadığınız veya benim yanlış yaptığı bir
   
 
 ## Demo2
+Amacımız, homepage'deki kategorilere göre Bloc yapısında gerekli state'leri emit etmek. Bu sayede, kategorilerimizi anlık olarak veritabanından çekip kullanıcıya ulaştıracağız.
+Bu örnekte basitlik adına cacheleme işlemi yapmayacağım. Ancak demo3'te, 1 ve 2'yi birleştirip ek olarak cacheleme özelliği ekleyeceğiz.
