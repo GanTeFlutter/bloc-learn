@@ -35,4 +35,19 @@ Demo1, bu kadar arkadaşlar.Anlamadığınız veya benim yanlış yaptığı bir
 
 ## Demo2
 Amacımız, homepage'deki kategorilere göre Bloc yapısında gerekli state'leri emit etmek. Bu sayede, kategorilerimizi anlık olarak veritabanından çekip kullanıcıya ulaştıracağız.
-Bu örnekte basitlik adına cacheleme işlemi yapmayacağım. Ancak demo3'te, 1 ve 2'yi birleştirip ek olarak cacheleme özelliği ekleyeceğiz.
+
+![map](https://github.com/user-attachments/assets/d34c7663-b2b9-48b4-9a0a-8049c4922237)
+
+
+Arayüz aşşağıdaki gibi buttonlar sayesinde eventleri göderiyoruz.UI pek özenmedim açıklama en altta :)
+<div style="display: flex; flex-wrap: wrap;">
+  <img src="https://github.com/user-attachments/assets/e5b364df-c5d3-4f73-9023-c37f8ac584db" alt="1" width="200" style="margin-bottom: 10px;" />
+  <img src="https://github.com/user-attachments/assets/8e94c7a5-c4b5-4c1b-a6ef-1261cedc530d" alt="2" width="200" style="margin-right: 10px; margin-bottom: 10px;" />
+  <img src="https://github.com/user-attachments/assets/b2ff3c52-aefc-4e81-839d-fe09283ea26e" alt="3" width="200" style="margin-right: 10px; margin-bottom: 10px;" />
+</div>
+
+------
+## Demo3
+### Anlamadığınız veya benim yanlış yaptığım bir yer varsa, ya da "şu kısmı şöyle yapsan daha güzel olurdu" dediğiniz bir şey bulunuyorsa, lütfen belirtin, böylece bende öğrenmiş olurum.
+Normalde Demo3'te ilk iki örneği birleştirmeyi düşünüyordum, ancak repomda bulunan  [Coffee Shop Mobile App](https://github.com/GanTeFlutter/coffe_shop_mobile_app) projesine her ikisini de ekleyip UI kısmını geliştireceğim. Oradan takip edebilirsiniz.
+
